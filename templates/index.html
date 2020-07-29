@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Mars</title>
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body>
+    
+    <div class="container text-center">
+        <h1 class="jumbotron">Mission to mars 
+            <div><a class="btn btn-primary" href="/scrape" role="button">Scrape New Data</a></div></h1>
+        <div class="row">
+            <div class="col">
+                <h2>Latest Mars News</h2>
+                <h3>{{scraping_to_html.news_title}}</h3>
+                <p>{{scraping_to_html.news_text}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <h2 style="text-align: left;">Featured Mars Image</h2>
+                <img class= "images" src= {{scraping_to_html.feature_img}}>
+            </div>
+            <div class="col-4">                
+                <div class="row">
+                    <div class="col" style="border: solid 1px black; margin-top: 40px;">
+                        <h3>Current weather on Mars</h3>
+                        <p>{{scraping_to_html.mars_weather_desc}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="padding: 10px;">
+                        <h3 style="padding: 10px;">Mars Facts</h3>
+                        {{scraping_to_html.facts_table | safe}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1 style="padding: 15px;">Mars Hemisphere</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img class= "images" src={{scraping_to_html.image_urls[0]}}>
+            </div>
+            <div class="col">
+                <img class= "images" src={{scraping_to_html.image_urls[1]}}>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3 style="text-align: center;">{{scraping_to_html.img_title_list[0]}}</h3>
+            </div>
+            <div class="col">
+                <h3 style="text-align: center;">{{scraping_to_html.img_title_list[1]}}</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <img class= "images" src={{scraping_to_html.image_urls[2]}}>
+            </div>
+            <div class="col">
+                <img class= "images" src={{scraping_to_html.image_urls[3]}}>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3 style="text-align: center;">{{scraping_to_html.img_title_list[2]}}</h3>
+            </div>
+            <div class="col">
+                <h3 style="text-align: center;">{{scraping_to_html.img_title_list[3]}}</h3>
+            </div>
+        </div>
+        </div>
+      </div>
+
+</body>
+</html>
